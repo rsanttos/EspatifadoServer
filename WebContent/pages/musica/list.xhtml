@@ -1,0 +1,68 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:c="http://java.sun.com/jsp/jstl/core"
+	xmlns:p="http://primefaces.org/ui" xmlns:o="http://omnifaces.org/ui"
+	template="/include/templateTeste.xhtml">
+	<ui:define name="conteudo">
+		<h:body>
+			<!-- Page Heading -->
+			<div class="row">
+				<div class="col-lg-12">
+					<h1 class="page-header">
+						Listagem de Músicas <small>músicas</small>
+					</h1>													
+					<h:form>
+						<h:commandButton id="btnNovo" action="#{ musicaMBean.novo }" value="Nova Música" immediate="true" class="btn btn-info" />
+					</h:form>
+					<ol class="breadcrumb">
+						<li class="active"><i class="fa fa-dashboard"></i> Músicas
+							</li>
+					</ol>
+				</div>
+			</div>
+			<div class="col-lg-12">
+				<div class="table-responsive">
+					<h:form>
+						<h:dataTable
+							class="table table-bordered table-hover table-striped"
+							value="#{ musicaMBean.listagem }" var="item"
+							id="tabela">
+
+							<h:column>
+								<f:facet name="header">
+									<h:outputText value="Nome" />
+								</f:facet>
+								<h:outputText value="#{ item.nome }" />
+							</h:column>
+
+							<h:column>
+								<f:facet name="header">
+									<h:outputText value="Cantor/Banda" />
+								</f:facet>
+								<h:outputText value="#{ item.banda }" />
+							</h:column>
+							
+							<h:column>
+								<f:facet name="header">
+									<h:outputText value="Opções" />
+								</f:facet>
+
+								<div align="center">
+									<h:commandLink class="btn btn-info"
+										action="#{ musicaMBean.alterar }" value="Editar">
+									</h:commandLink>
+									<h:commandLink class="btn btn-danger"
+										action="#{ musicaMBean.remover }" value="Remover"
+										onclick="return confirm('Deseja realmente remover esse registro?')">
+									</h:commandLink>
+								</div>
+							</h:column>
+						</h:dataTable>
+					</h:form>
+				</div>
+			</div>
+		</h:body>
+	</ui:define>
+</ui:composition>

@@ -1,0 +1,78 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:c="http://java.sun.com/jsp/jstl/core"
+	xmlns:p="http://primefaces.org/ui" xmlns:o="http://omnifaces.org/ui"
+	template="/include/templateTeste.xhtml">
+	<ui:define name="conteudo">
+		<h:body>
+			<!-- Page Heading -->
+			<div class="row">
+				<div class="col-lg-12">
+					<h1 class="page-header">
+						Listagem de Usuários <small>usuários</small>
+					</h1>													
+					<h:form>
+						<h:commandButton id="btnNovo" action="#{ usuarioMBean.novo }" value="Novo Usuário" immediate="true" class="btn btn-info" />
+					</h:form>
+					<ol class="breadcrumb">
+						<li class="active"><i class="fa fa-dashboard"></i> Usuários
+							</li>
+					</ol>
+				</div>
+			</div>
+			<div class="col-lg-12">
+				<div class="table-responsive">
+					<h:form>
+						<h:dataTable
+							class="table table-bordered table-hover table-striped"
+							value="#{ usuarioMBean.listagem }" var="item"
+							id="tabela">
+
+							<h:column>
+								<f:facet name="header">
+									<h:outputText value="Nome" />
+								</f:facet>
+								<h:outputText value="#{ item.pessoa.nome }" />
+							</h:column>
+
+							<h:column>
+								<f:facet name="header">
+									<h:outputText value="E-mail" />
+								</f:facet>
+								<div align="center">
+									<h:outputText value="#{ item.pessoa.email }" />
+								</div>
+							</h:column>
+
+							<h:column>
+								<f:facet name="header">
+									<h:outputText value="Login" />
+								</f:facet>
+								<div align="center">
+									<h:outputText value="#{ item.login }" />
+								</div>
+							</h:column>
+							<h:column>
+								<f:facet name="header">
+									<h:outputText value="Opções" />
+								</f:facet>
+
+								<div align="center">
+									<h:commandLink class="btn btn-info"
+										action="#{ usuarioMBean.alterar }" value="Editar">
+									</h:commandLink>
+									<h:commandLink class="btn btn-danger"
+										action="#{ usuarioMBean.remover }" value="Remover"
+										onclick="return confirm('Deseja realmente remover esse registro?')">
+									</h:commandLink>
+								</div>
+							</h:column>
+						</h:dataTable>
+					</h:form>
+				</div>
+			</div>
+		</h:body>
+	</ui:define>
+</ui:composition>

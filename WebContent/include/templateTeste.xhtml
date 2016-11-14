@@ -1,0 +1,196 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:c="http://java.sun.com/jsp/jstl/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+	
+<h:head>
+
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+
+    <title>EspatifadoServer</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link href="/EspatifadoServer/css/bootstrap.min.css" rel="stylesheet" />
+
+    <!-- Custom CSS -->
+    <link href="/EspatifadoServer/css/sb-admin.css" rel="stylesheet" />
+
+    <!-- Morris Charts CSS -->
+    <link href="/EspatifadoServer/css/plugins/morris.css" rel="stylesheet" />
+
+    <!-- Custom Fonts -->
+    <link href="/EspatifadoServer/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+</h:head>
+
+<h:body>
+
+    <div id="wrapper">
+
+        <!-- Navigation -->
+        <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+				<div style="position: relative;	margin-top: -9px;">
+					<h:form style="margin: 0 0 0px">
+						<h:commandLink class="navbar-brand" id="nomeSistema" immediate="true" value="" action="#{ controleNavegacao.visualizarDashboard }">
+							<h:graphicImage id="logo-smartpole-menor" alt="A imagem não pôde ser caregada." title="SmartPole" value="/img/logo_smartpole_menor.png"/>
+						</h:commandLink>
+					</h:form>
+				</div>
+            </div>
+            <!-- Sidebar Menu Items - These collapse to the responsive navigation menu on small screens -->
+            <div class="collapse navbar-collapse navbar-ex1-collapse">
+        		<h:form>
+	                <ul class="nav navbar-nav side-nav">
+	                	<li>
+							<h:commandLink id="musicas" immediate="true" value="Músicas" action="#{ controleNavegacao.visualizarMusicas }" >
+								<i class="fa fa-dashboard"></i>
+							</h:commandLink>
+			            </li>
+			            <li>
+							<h:commandLink id="usuarios" immediate="true" value="Usuários" action="#{ controleNavegacao.visualizarUsuarios }" >
+								<i class="fa fa-user"></i>
+							</h:commandLink>
+			            </li>						
+	                </ul>
+                </h:form>
+            </div>
+            <!-- /.navbar-collapse -->
+        </nav>
+
+        <div id="page-wrapper">
+
+            <div class="container-fluid">
+                <!-- /.row -->
+
+                <div class="row">
+                	<ui:insert name="conteudo">
+         				Conteúdo
+    				</ui:insert>
+                </div>
+                <!-- /.row -->
+            </div>
+            <!-- /.container-fluid -->
+
+        </div>
+        <!-- /#page-wrapper -->
+
+    </div>
+    <!-- /#wrapper -->
+    <div class="clearfix"></div>
+	<footer style="position: relative; margin-left: 45%;">	
+		<p>
+			<span style="text-align: left; float: left">Copyright &#169;
+					Adapted by 
+					<a href="">
+					Ramon Malaquias</a>.
+			</span>
+		</p>
+	</footer>
+	<!--  
+	<footer style="position: relative; margin-left: 45%; margin-top: 70%;">	
+		<p>
+			<span style="text-align: left; float: left">Copyright &#169;
+					Adapted by 
+					<a href="">
+					Ramon Malaquias</a>.
+			</span>
+		</p>
+	</footer> 
+	-->
+    <!-- JavaScript -->
+	<script src="/EspatifadoServer/js/jquery-1.9.1.min.js"></script>
+
+	<script src="/EspatifadoServer/js/jquery-migrate-1.0.0.min.js"></script>
+
+	<script src="/EspatifadoServer/js/jquery-ui-1.10.0.custom.min.js"></script>
+
+	<script src="/EspatifadoServer/js/jquery.ui.touch-punch.js"></script>
+
+	<script src="/EspatifadoServer/js/modernizr.js"></script>
+
+	<script src="/EspatifadoServer/js/bootstrap.min.js"></script>
+
+	<script src="/EspatifadoServer/js/jquery.cookie.js"></script>
+
+	<script src='/EspatifadoServer/js/fullcalendar.min.js'></script>
+
+	<script src='/EspatifadoServer/js/jquery.dataTables.min.js'></script>
+
+	<script src="/EspatifadoServer/js/excanvas.js"></script>
+
+	<script src="/EspatifadoServer/js/jquery.flot.js"></script>
+
+	<script src="/EspatifadoServer/js/jquery.flot.pie.js"></script>
+
+	<script src="/EspatifadoServer/js/jquery.flot.stack.js"></script>
+
+	<script src="/EspatifadoServer/js/jquery.flot.resize.min.js"></script>
+
+	<script src="/EspatifadoServer/js/jquery.chosen.min.js"></script>
+
+	<script src="/EspatifadoServer/js/jquery.uniform.min.js"></script>
+
+	<script src="/EspatifadoServer/js/jquery.cleditor.min.js"></script>
+
+	<script src="/EspatifadoServer/js/jquery.noty.js"></script>
+
+	<script src="/EspatifadoServer/js/jquery.elfinder.min.js"></script>
+
+	<script src="/EspatifadoServer/js/jquery.raty.min.js"></script>
+
+	<script src="/EspatifadoServer/js/jquery.iphone.toggle.js"></script>
+
+	<script src="/EspatifadoServer/js/jquery.uploadify-3.1.min.js"></script>
+
+	<script src="/EspatifadoServer/js/jquery.gritter.min.js"></script>
+
+	<script src="/EspatifadoServer/js/jquery.imagesloaded.js"></script>
+
+	<script src="/EspatifadoServer/js/jquery.masonry.min.js"></script>
+
+	<script src="/EspatifadoServer/js/jquery.knob.modified.js"></script>
+
+	<script src="/EspatifadoServer/js/jquery.sparkline.min.js"></script>
+
+	<script src="/EspatifadoServer/js/counter.js"></script>
+
+	<script src="/EspatifadoServer/js/retina.js"></script>
+
+	<script src="/EspatifadoServer/js/custom.js"></script>
+	
+	<script src="/EspatifadoServer/js/funcoes.js"></script>
+		
+	<script src="/EspatifadoServer/js/funcoes_maps.js"></script>
+	
+	<script src="/EspatifadoServer/js/video.js"></script>
+	
+
+
+    <!-- Morris Charts JavaScript -->
+    <script src="/EspatifadoServer/js/plugins/morris/raphael.min.js"></script>
+    <script src="/EspatifadoServer/js/plugins/morris/morris.min.js"></script>
+    <script src="/EspatifadoServer/js/plugins/morris/morris-data.js"></script>
+
+</h:body>
+</html>

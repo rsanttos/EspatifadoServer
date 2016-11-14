@@ -1,0 +1,171 @@
+<html xmlns="http://www.w3.org/1999/xhtml" 
+xmlns:h="http://java.sun.com/jsf/html" 
+xmlns:f="http://java.sun.com/jsf/core"
+xmlns:c="http://java.sun.com/jsp/jstl/core" 
+xmlns:ui="http://java.sun.com/jsf/facelets"
+xmlns:p="http://primefaces.org/ui">
+
+  <h:head>
+	
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <link rel="icon" href="/PoleManager/imagens/icon.png" />
+    
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <title>PoleManager</title>
+
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="/PoleManager/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="/PoleManager/css/dataTables.bootstrap.css"/>
+    <link rel="stylesheet" href="/PoleManager/css/sistema.css"/>
+    <style>
+    	.inv-dashboard *, .inv-topo-main *{font-family:'gandhi' !important;}
+    </style>
+    
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    
+    <h:outputScript library="primefaces" name="jquery/jquery.js" target="head" />
+	<h:outputScript target="head">
+	    $ = jQuery;
+	</h:outputScript>
+	
+	<script>  
+            PrimeFaces.locales['pt_BR'] = {  
+                closeText: 'Fechar',  
+                prevText: 'Anterior',  
+                nextText: 'Próximo',  
+                currentText: 'Começo',  
+                monthNames: ['Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho', 'Julho', 'Agosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro'],  
+                monthNamesShort: ['Jan', 'Fev', 'Mar', 'Abr', 'Mai', 'Jun', 'Jul', 'Ago', 'Set', 'Out', 'Nov', 'Dez'],  
+                dayNames: ['Domingo', 'Segunda', 'Terça', 'Quarta', 'Quinta', 'Sexta', 'Sábado'],  
+                dayNamesShort: ['Dom', 'Seg', 'Ter', 'Qua', 'Qui', 'Sex', 'Sáb'],  
+                dayNamesMin: ['D', 'S', 'T', 'Q', 'Q', 'S', 'S'],  
+                weekHeader: 'Semana',  
+                firstDay: 0,  
+                isRTL: false,  
+                showMonthAfterYear: false,  
+                yearSuffix: '',  
+                timeOnlyTitle: 'Só Horas',  
+                timeText: 'Tempo',  
+                hourText: 'Hora',  
+                minuteText: 'Minuto',  
+                secondText: 'Segundo',  
+                ampm: false,  
+                month: 'Mês',  
+                week: 'Semana',  
+                day: 'Dia',  
+                allDayText: 'Todo o Dia'  
+            };  
+        </script>
+    
+  </h:head>
+
+  <h:body>
+
+    <div class="container-fluid">
+    
+    <h:form id="templateForm"> 
+      
+      <!-- Navegação -->
+      <div class="row" style="float: left;">
+        <div class="col-md-2 inv-navegacao">
+          
+	<!--logo-->
+          
+          <!-- usuário -->
+          <div class="inv-usuario">
+            <div class="inv-img-usuario">
+            	<p:graphicImage id="avatar" value="#{usuarioMBean.avatar}" cache="false" ></p:graphicImage>
+            </div>
+            <div class="inv-menu-usuario">
+              <p>#{usuarioMBean.usuarioLogado.login}</p>
+              <div class="inv-itens-menu-usuario">
+                <ul class="nav nav-tabs">
+                  <li><a href="/PoleManager/pages/mensagem/form.jsf"><span class="glyphicon glyphicon-envelope" aria-hidden="true"></span></a></li>
+                  <li><a href="#"><span class="glyphicon glyphicon-question-sign" aria-hidden="true"></span></a></li>
+                  <li><a href="/PoleManager/pages/usuario/meusDados.jsf"><span class="glyphicon glyphicon-cog" aria-hidden="true"></span></a></li>
+                  <li><a href="/PoleManager/logout"><span class="glyphicon glyphicon-off" aria-hidden="true"></span></a></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          
+          <!-- menu -->
+          <div class="inv-menu-lateral">
+            <div id="MainMenu">
+              <div class="list-group">
+
+                <!-- Mudar para listar -->
+               <h:commandLink class="inv-lista-menu" data-parent="#MainMenu" action="#{tipoMBean.listar}">Tipo</h:commandLink>
+                
+                <h:commandLink class="inv-lista-menu" data-parent="#MainMenu" action="#{usuarioMBean.listar}">Usuário</h:commandLink> 
+                
+              </div>
+            </div>
+          </div>
+        </div> 
+      </div>
+	</h:form> 
+
+      <!-- Dashboards -->
+      <div class="row">
+
+        <!-- Menu mobile -->
+        <div class="inv-top-mobile">
+          <div class="inv-logo-mobile">
+            logo
+          </div>
+          <div class="inv-menu-mobile">
+            <span class="glyphicon glyphicon-menu-hamburger" aria-hidden="true"></span>
+          </div>
+        </div>
+
+        <!-- Conteudo -->
+        <div class="col-md-10 col-xs-12 inv-conteudo">
+
+          <div class="inv-topo-main">
+            <!-- <div class="inv-topo-endereco"><a href="/PoleManager/pages/index.jsf"><span class="glyphicon glyphicon-home" aria-hidden="true"></span>home</a></div> -->
+            <div class="inv-topo-informativo">
+              <div class="inv-topo-pagina">
+                <p>Bem-vindo ao sistema de gerenciamento de Postes Inteligentes</p>
+                <span>Vai nessa.</span>
+              </div>
+              <div class="inv-topo-data">
+                <!-- <span>Quinta-feira<br/>Março</span>
+                <p>26</p> -->
+                <p:clock pattern="EEEE, dd MMM, yyyy" mode="server" />
+              </div>
+            </div>
+          </div>
+
+          <div class="inv-dashboard">
+				 <ui:insert name="conteudo">
+         		   Conteúdo
+    			</ui:insert>
+          </div>
+
+        </div>
+
+      </div>
+
+      <!-- Footer -->
+      <div class="col-md-10 inv-footer">
+        <p><b>PoleManager</b></p> 
+      </div>
+
+    </div>
+
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="/PoleManager/js/bootstrap.min.js"></script> 
+    <script src="/PoleManager/js/jquery.dataTables.js"></script> 
+    <script src="/PoleManager/js/functions.js"></script> 
+ 
+
+  </h:body>
+</html>

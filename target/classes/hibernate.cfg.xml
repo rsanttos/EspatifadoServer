@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-configuration PUBLIC
+		"-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+		"http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+
+	<session-factory>
+
+		<!-- Database connection settings -->
+		<property name="connection.driver_class">org.postgresql.Driver</property>
+		<property name="connection.url">jdbc:postgresql://localhost/Espatifado</property>
+		<property name="connection.username">espatifado</property>
+		<property name="connection.password">espatifado</property>
+		<property name="hbm2ddl.auto">update</property>
+		<!-- SQL dialect -->
+		<property name="dialect">org.hibernate.dialect.PostgreSQLDialect</property>
+
+		<!-- Echo all executed SQL to stdout -->
+		<property name="show_sql">true</property>
+
+		<property name="current_session_context_class">thread</property>
+		<mapping class="br.com.ufrn.bti.concorrente.espatifado.server.dominio.Pessoa" />
+		<mapping class="br.com.ufrn.bti.concorrente.espatifado.server.dominio.Usuario" />
+		<mapping class="br.com.ufrn.bti.concorrente.espatifado.server.dominio.Musica" />
+		<!-- <mapping resource="com/icesoft/icefaces/tutorial/crud/hibernate/Course.hbm.xml"/> 
+			<mapping resource="com/icesoft/icefaces/tutorial/crud/hibernate/Student.hbm.xml"/> -->
+
+	</session-factory>
+</hibernate-configuration>
