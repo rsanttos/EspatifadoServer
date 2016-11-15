@@ -1,10 +1,13 @@
 package br.com.ufrn.bti.concorrente.espatifado.server.controle;
 
+import java.io.IOException;
+
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.context.FacesContext;
 import javax.faces.model.DataModel;
 import javax.faces.model.ListDataModel;
+import javax.servlet.http.Part;
 
 import br.com.ufrn.bti.concorrente.espatifado.server.dominio.Musica;
 import br.com.ufrn.bti.concorrente.espatifado.server.servico.MusicaService;
@@ -15,6 +18,8 @@ public class MusicaMBean {
 	private MusicaService musicaService;
 	
 	private Musica musica;
+
+	private Part part;
 
 	private DataModel<Musica> listagem;
 	
@@ -65,7 +70,13 @@ public class MusicaMBean {
 		
 		return getDir() + "/list.jsf";
 	}
-
+	
+	public String upload() throws IOException{
+		musicaService.upload(musica, part);
+		musica = new Musica();
+		return getDir() + "/list.jsf";
+	}
+	
 	public MusicaService getMusicaService() {
 		return musicaService;
 	}
@@ -89,6 +100,14 @@ public class MusicaMBean {
 
 	public void setListagem(DataModel<Musica> listagem) {
 		this.listagem = listagem;
+	}
+
+	public Part getPart() {
+		return part;
+	}
+
+	public void setPart(Part part) {
+		this.part = part;
 	}
 	
 }

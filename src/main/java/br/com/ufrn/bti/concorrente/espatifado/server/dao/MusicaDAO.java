@@ -17,14 +17,6 @@ public class MusicaDAO extends GenericDAO {
 	 */
 	public MusicaDAO() {
 	}
-	
-	public void salvarOuAtualizar(Musica obj) {
-		Session session = HibernateUtil.getSessionFactory().openSession();
-		session.clear();
-		session.saveOrUpdate(obj);
-		session.flush();
-		session.clear();
-	}
 
 	/**
 	 * Método que retorna a listagem de usuários
