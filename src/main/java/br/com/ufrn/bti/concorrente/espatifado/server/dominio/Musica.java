@@ -10,7 +10,7 @@ import javax.persistence.SequenceGenerator;
 import org.dom4j.tree.AbstractEntity;
 
 @Entity
-public class Musica  extends AbstractEntity{
+public class Musica extends AbstractEntity{
 	
 	private static final long serialVersionUID = -1370492530379526895L;
 

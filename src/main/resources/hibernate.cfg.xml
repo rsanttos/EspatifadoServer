@@ -22,6 +22,7 @@
 		<mapping class="br.com.ufrn.bti.concorrente.espatifado.server.dominio.Pessoa" />
 		<mapping class="br.com.ufrn.bti.concorrente.espatifado.server.dominio.Usuario" />
 		<mapping class="br.com.ufrn.bti.concorrente.espatifado.server.dominio.Musica" />
+		<mapping class="br.com.ufrn.bti.concorrente.espatifado.server.dominio.Produtora" />
 		<!-- <mapping resource="com/icesoft/icefaces/tutorial/crud/hibernate/Course.hbm.xml"/> 
 			<mapping resource="com/icesoft/icefaces/tutorial/crud/hibernate/Student.hbm.xml"/> -->
 
