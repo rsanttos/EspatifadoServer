@@ -9,6 +9,7 @@ import javax.servlet.http.Part;
 
 import br.com.ufrn.bti.concorrente.espatifado.server.dao.MusicaDAO;
 import br.com.ufrn.bti.concorrente.espatifado.server.dominio.Musica;
+import br.com.ufrn.bti.concorrente.espatifado.server.util.JSONProcessor;
 
 public class MusicaService {
 
@@ -59,5 +60,13 @@ public class MusicaService {
 			}
 		}
 		return null;
+	}
+	
+	public String getMusicasJson(){
+		String json = new String();
+		
+		json = JSONProcessor.toJSON(this.listar());
+		
+		return json;
 	}
 }
