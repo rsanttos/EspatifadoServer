@@ -70,7 +70,6 @@ public class TratadorRequisicoes implements Runnable {
 					} else {
 						mensagemResposta.setTipoMensagem(TipoMensagem.SOLICITA_COMPRA_SUCESSO);
 					}
-					
 				} catch (IOException | ClassNotFoundException ex) {
 					mensagemResposta = new MensagemResposta<String>(TipoMensagem.SOLICITA_COMPRA_FALHA, "", false);
 				}
@@ -89,7 +88,17 @@ public class TratadorRequisicoes implements Runnable {
 		}
 
 		try {
-			this.socket.close();
+			if(this.outputStream != null){
+				this.outputStream.close();
+			}
+			
+			if(this.inputStream != null){
+				this.inputStream.close();	
+			}
+			
+			if(this.socket != null){
+				this.socket.close();	
+			}
 		} catch (IOException e) {
 			System.out.println("ERRO ao fechar o socket!");
 			e.printStackTrace();
