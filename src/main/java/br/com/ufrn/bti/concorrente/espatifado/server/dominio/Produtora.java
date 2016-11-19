@@ -1,5 +1,7 @@
 package br.com.ufrn.bti.concorrente.espatifado.server.dominio;
 
+import java.io.Serializable;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -10,8 +12,12 @@ import javax.persistence.SequenceGenerator;
 import org.dom4j.tree.AbstractEntity;
 
 @Entity
-public class Produtora extends AbstractEntity {
+public class Produtora extends AbstractEntity implements Serializable {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -5731950556298724095L;
 	@Id
 	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="SEQ_PRODUTORA")
 	@SequenceGenerator(name="SEQ_PRODUTORA", sequenceName="id_seq_produtora", allocationSize=1)

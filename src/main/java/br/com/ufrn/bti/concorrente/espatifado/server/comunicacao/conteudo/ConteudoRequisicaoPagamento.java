@@ -1,9 +1,15 @@
 package br.com.ufrn.bti.concorrente.espatifado.server.comunicacao.conteudo;
 
+import java.io.Serializable;
+
 import br.com.ufrn.bti.concorrente.espatifado.server.dominio.Pessoa;
 
-public class ConteudoRequisicaoPagamento {
+public class ConteudoRequisicaoPagamento implements Serializable {
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 7095279267748919728L;
 	private Pessoa pessoa;
 	private double valorPagamento;
 

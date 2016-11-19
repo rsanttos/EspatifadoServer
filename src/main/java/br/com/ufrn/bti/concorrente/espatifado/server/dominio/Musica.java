@@ -1,5 +1,7 @@
 package br.com.ufrn.bti.concorrente.espatifado.server.dominio;
 
+import java.io.Serializable;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -10,7 +12,7 @@ import javax.persistence.SequenceGenerator;
 import org.dom4j.tree.AbstractEntity;
 
 @Entity
-public class Musica extends AbstractEntity{
+public class Musica extends AbstractEntity implements Serializable{
 	
 	private static final long serialVersionUID = -1370492530379526895L;
 

@@ -1,5 +1,7 @@
 package br.com.ufrn.bti.concorrente.espatifado.server.dominio;
 
+import java.io.Serializable;
+
 /**
  * 
  */
@@ -22,7 +24,7 @@ import com.google.gson.annotations.SerializedName;
 
 @Entity
 @Table(name="pessoa", schema="public")
-public class Pessoa extends AbstractEntity{
+public class Pessoa extends AbstractEntity implements Serializable{
 
 	private static final long serialVersionUID = 1L;
 

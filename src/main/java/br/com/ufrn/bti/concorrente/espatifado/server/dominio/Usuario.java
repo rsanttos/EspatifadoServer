@@ -1,5 +1,6 @@
 package br.com.ufrn.bti.concorrente.espatifado.server.dominio;
 
+import java.io.Serializable;
 import java.util.List;
 
 import javax.persistence.Column;
@@ -19,7 +20,7 @@ import org.dom4j.tree.AbstractEntity;
 import com.google.gson.annotations.SerializedName;
 
 @Entity
-public class Usuario extends AbstractEntity{
+public class Usuario extends AbstractEntity implements Serializable {
 	
 	private static final long serialVersionUID = -1370492530379526895L;
 

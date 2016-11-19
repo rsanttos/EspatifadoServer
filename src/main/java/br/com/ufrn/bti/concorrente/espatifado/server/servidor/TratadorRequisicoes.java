@@ -28,29 +28,22 @@ public class TratadorRequisicoes implements Runnable {
 
 	public TratadorRequisicoes(Socket socket) {
 		this.socket = socket;
+		this.mensagem = new MensagemRequisicao<>();
 		this.servicoMusicas = new MusicaService();
 		this.servicoUsuario = new UsuarioService();
 		this.servicoProdutora = new ProdutoraService();
-		this.produtora = servicoProdutora.buscarPeloNome("Espatifado");
-		try {
-			this.socketBTICard = new Socket("locahost", 8889);
-		} catch (IOException e) {
-			this.socketBTICard = null;
-		}
 	}
 
+	@SuppressWarnings("rawtypes")
 	@Override
 	public void run() {
 		try {
 			this.inputStream = new ObjectInputStream(this.socket.getInputStream());
 			this.outputStream = new ObjectOutputStream(this.socket.getOutputStream());
-		} catch (IOException e) {
-			System.out.println("ERRO no estabelecimento da comunicação!");
-			e.printStackTrace();
-		}
-
-		try {
+		
+			System.out.println("Lendo mensagem...");
 			this.mensagem = (MensagemRequisicao) this.inputStream.readObject();
+			System.out.println("Leu mensagem! " + this.mensagem.getTipoMensagem());
 		} catch (ClassNotFoundException | IOException e) {
 			System.out.println("ERRO na leitura do objeto recebido!");
 			e.printStackTrace();
@@ -58,6 +51,9 @@ public class TratadorRequisicoes implements Runnable {
 
 		MensagemResposta mensagemResposta;
 
+		System.out.print("Processando requisicao.. ");
+		this.produtora = servicoProdutora.buscarPeloNome("Espatifado");
+		
 		if (this.mensagem.getTipoMensagem() == TipoMensagem.LOGIN) {
 			mensagemResposta = trataLogin();
 		} else if (this.mensagem.getTipoMensagem() == TipoMensagem.LISTA_MUSICAS) {
@@ -68,6 +64,8 @@ public class TratadorRequisicoes implements Runnable {
 		} else {
 			mensagemResposta = new MensagemResposta<String>(TipoMensagem.REQUISICAO_NAO_TRATAVEL, "", false);
 		}
+		
+		System.out.print("Processada! Enviando resposta... ");
 
 		try {
 			this.outputStream.writeObject(mensagemResposta);
@@ -117,6 +115,12 @@ public class TratadorRequisicoes implements Runnable {
 	private MensagemResposta trataSolicitacaoCompra() {
 		ConteudoRequisicaoPagamento conteudoPagamento = (ConteudoRequisicaoPagamento) this.mensagem.getConteudo();
 		MensagemResposta mensagemResposta;
+		
+		try {
+			this.socketBTICard = new Socket("locahost", 8889);
+		} catch (IOException e) {
+			this.socketBTICard = null;
+		}
 
 		if (this.socketBTICard != null) {
 			try {
