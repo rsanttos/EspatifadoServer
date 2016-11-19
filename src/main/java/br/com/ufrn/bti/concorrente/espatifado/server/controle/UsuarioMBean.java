@@ -5,6 +5,8 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.context.FacesContext;
 import javax.faces.model.DataModel;
 import javax.faces.model.ListDataModel;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import br.com.ufrn.bti.concorrente.espatifado.server.dominio.Pessoa;
 import br.com.ufrn.bti.concorrente.espatifado.server.dominio.Usuario;
@@ -162,5 +164,37 @@ public class UsuarioMBean {
 		return listagem;
 	}	
 
+	public String realizaLogin(){
+		
+		Usuario usuarioAux = new Usuario();
+		
+		usuarioAux = usuarioService.getByLogin(usuario.getLogin());
+		
+		if(usuarioAux != null){
+			if(usuarioAux.getSenha() == usuario.getSenha()){
+
+				FacesContext fc = FacesContext.getCurrentInstance();
+				HttpSession session = (HttpSession) fc.getExternalContext().getSession(false);
+				session.setAttribute("USUARIO_LOGADO", usuario);
+				
+				return "/pages/musica/list.jsf";
+			}
+		}
+		
+		return "/pages/musica/list.jsf";
+	}
+	
+	public Usuario getUsuarioLogado(){
+		Usuario usuarioLogado = new Usuario();
+		
+		HttpServletRequest req = (HttpServletRequest) FacesContext.getCurrentInstance().getExternalContext()
+				.getRequest();
+		HttpServletRequest request = (HttpServletRequest) req;
+		HttpSession session = (HttpSession) request.getSession();
+
+		usuarioLogado = (Usuario) session.getAttribute("USUARIO_LOGADO");
+		
+		return usuarioLogado;
+	}
 }
 
