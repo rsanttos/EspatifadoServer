@@ -11,7 +11,7 @@
 		<property name="connection.url">jdbc:postgresql://localhost/Espatifado</property>
 		<property name="connection.username">espatifado</property>
 		<property name="connection.password">espatifado</property>
-		<property name="hbm2ddl.auto">create</property>
+		<property name="hbm2ddl.auto">update</property>
 		<!-- SQL dialect -->
 		<property name="dialect">org.hibernate.dialect.PostgreSQLDialect</property>
 
@@ -19,9 +19,10 @@
 		<property name="show_sql">true</property>
 
 		<property name="current_session_context_class">thread</property>
-		<mapping class="br.com.ufrn.bti.concorrente.espatifado.server.dominio.Pessoa" />
-		<mapping class="br.com.ufrn.bti.concorrente.espatifado.server.dominio.Usuario" />
-		<mapping class="br.com.ufrn.bti.concorrente.espatifado.server.dominio.Musica" />
+		<mapping class="br.com.ufrn.bti.dominio.Pessoa" />
+		<mapping class="br.com.ufrn.bti.dominio.Usuario" />
+		<mapping class="br.com.ufrn.bti.dominio.Musica" />
+		<mapping class="br.com.ufrn.bti.dominio.Produtora" />
 		<!-- <mapping resource="com/icesoft/icefaces/tutorial/crud/hibernate/Course.hbm.xml"/> 
 			<mapping resource="com/icesoft/icefaces/tutorial/crud/hibernate/Student.hbm.xml"/> -->
 
