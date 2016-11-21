@@ -18,6 +18,9 @@ import com.google.gson.GsonBuilder;
  *
  */
 public class JSONProcessor {
+	
+	public static String caminhoJson = "/Users/ramonsantos/workspace/file.json";
+	
 	public synchronized static <T> T toObject(String jsonText, Class<T> classe) throws IOException {
 		GsonBuilder gsonBuilder = new GsonBuilder();
 		gsonBuilder.registerTypeAdapterFactory(HibernateProxyTypeAdapter.FACTORY);
@@ -41,7 +44,7 @@ public class JSONProcessor {
 		try {
 			json = "'"+ json + "'";
 			// Escreve Json convertido em arquivo chamado "file.json"
-			FileWriter writer = new FileWriter("/home/inacio-medeiros/file.json");
+			FileWriter writer = new FileWriter(caminhoJson);
 			writer.write(json);
 			writer.close();
 

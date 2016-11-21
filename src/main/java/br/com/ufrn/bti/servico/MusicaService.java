@@ -20,6 +20,10 @@ public class MusicaService {
 
 	private MusicaDAO musicaDao;
 
+	private static String caminhoArquivoServer = "/Users/ramonsantos/bti/workspaces/concorrente_distribuida/EspatifadoFiles/server/";
+	
+	private static String caminhoArquivoCliente = "/Users/ramonsantos/bti/workspaces/concorrente_distribuida/EspatifadoFiles/cliente/";
+	
 	public MusicaService() {
 		musicaDao = new MusicaDAO();
 	}
@@ -40,8 +44,8 @@ public class MusicaService {
 
 	public void upload(Musica musica, Part part) throws IOException {
 		String nomeArquivo = getFileName(part);
-		musica.setCaminhoArquivoServidor("/home/inacio-medeiros/Music/servidor/" + nomeArquivo);
-		musica.setCaminhoArquivoCliente("/home/inacio-medeiros/Music/cliente/" + nomeArquivo);
+		musica.setCaminhoArquivoServidor(caminhoArquivoServer + nomeArquivo);
+		musica.setCaminhoArquivoCliente(caminhoArquivoCliente + nomeArquivo);
 		musica.setTamanho(part.getSize());
 		realizaUpload(part);
 		musicaDao.salvarOuAtualizar(musica);
@@ -77,7 +81,7 @@ public class MusicaService {
 
 	public void realizaUpload(Part arquivo) throws IOException {
 		String fileName = getFileName(arquivo);
-		String filePath = "/home/inacio-medeiros/Music/servidor/";
+		String filePath = caminhoArquivoServer;
 
 		File fileSaveDir = new File(filePath);
 		if (!fileSaveDir.exists()) {
