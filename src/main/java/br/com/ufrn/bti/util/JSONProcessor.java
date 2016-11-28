@@ -18,8 +18,9 @@ import com.google.gson.GsonBuilder;
  *
  */
 public class JSONProcessor {
+	public static String caminhoJson = "/home/ramon/EspatifadoServer/file.json";
 	
-	public static String caminhoJson = "/Users/ramonsantos/workspace/file.json";
+	//public static String caminhoJson = "/Users/ramonsantos/workspace/file.json";
 	
 	public synchronized static <T> T toObject(String jsonText, Class<T> classe) throws IOException {
 		GsonBuilder gsonBuilder = new GsonBuilder();

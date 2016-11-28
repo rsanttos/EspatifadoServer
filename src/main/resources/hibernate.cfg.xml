@@ -8,7 +8,7 @@
 
 		<!-- Database connection settings -->
 		<property name="connection.driver_class">org.postgresql.Driver</property>
-		<property name="connection.url">jdbc:postgresql://localhost/Espatifado</property>
+		<property name="connection.url">jdbc:postgresql://localhost/espatifado</property>
 		<property name="connection.username">espatifado</property>
 		<property name="connection.password">espatifado</property>
 		<property name="hbm2ddl.auto">update</property>

@@ -19,10 +19,14 @@ import br.com.ufrn.bti.util.JSONProcessor;
 public class MusicaService {
 
 	private MusicaDAO musicaDao;
-
-	private static String caminhoArquivoServer = "/Users/ramonsantos/bti/workspaces/concorrente_distribuida/EspatifadoFiles/server/";
+	
+	private static String caminhoArquivoServer = "/home/ramon/EspatifadoServer/server/";
 	
 	private static String caminhoArquivoCliente = "/Users/ramonsantos/bti/workspaces/concorrente_distribuida/EspatifadoFiles/cliente/";
+	
+	//private static String caminhoArquivoServer = "/Users/ramonsantos/bti/workspaces/concorrente_distribuida/EspatifadoFiles/server/";
+	
+	//private static String caminhoArquivoCliente = "/Users/ramonsantos/bti/workspaces/concorrente_distribuida/EspatifadoFiles/cliente/";
 	
 	public MusicaService() {
 		musicaDao = new MusicaDAO();
